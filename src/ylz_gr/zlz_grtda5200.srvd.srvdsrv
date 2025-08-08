@@ -1,0 +1,4 @@
+@EndUserText.label: '[GR]고정자산관련-기준정보'
+define service ZLZ_GRTDA5200 {
+  expose ZLZ_C_GRTDA5200 as ZLZ_GRTDA01;
+}

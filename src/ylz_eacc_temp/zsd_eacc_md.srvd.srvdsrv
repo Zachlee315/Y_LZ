@@ -1,0 +1,9 @@
+@EndUserText.label: 'EACC Master data get service'
+define service ZSD_EACC_MD {
+  expose ZI_EACC_GLACC;
+  expose ZI_EACC_COSTCENTER;
+  expose ZI_EACC_SUPPLIER;
+  expose I_BusinessAreaText;
+  expose I_PaymentMethod;
+  expose I_PaymentTerms;
+}

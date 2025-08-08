@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for MES outsourcing'
+define service Zsd_outsourcing {
+  expose zif_r_outsourcing;
+}

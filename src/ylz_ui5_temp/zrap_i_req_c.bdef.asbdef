@@ -1,0 +1,56 @@
+managed implementation in class zbp_rap_i_req_c unique;
+strict ( 2 );
+
+define behavior for ZRAP_I_REQ_C alias PurchaseCreate
+with additional save
+persistent table zrap_d_req_c
+lock master
+etag master LastChangedAt
+authorization master ( global )
+//etag master <field_name>
+{
+  field ( readonly )
+
+  PurchaseUUID,
+  OverallStatus,
+  CreatedBy,
+  CreatedAt,
+  LastChangedBy,
+  LastChangedAt;
+
+  field ( numbering : managed )
+  PurchaseUUID;
+
+  create;
+  update;
+  delete;
+  determination create_pr on save { create; }
+//  action ( features : instance ) create_pr  result [1] $self;
+//  static action create_pr_00 result [1] $self;
+
+//action ( features : instance ) create_pr;
+
+  mapping for zrap_d_req_c
+  {
+    PurchaseUUid = purchase_uuid;
+    Purchaserequisition = purchaserequisition;
+    Purchaserequisitionitem = purchaserequisitionitem;
+    Purchaserequisitiontype = purchaserequisitiontype;
+    Plant = plant;
+    Purchaserequisitionitemtext = purchaserequisitionitemtext;
+    Accountassiqnmentcategory = accountassiqnmentcategory;
+    Requestedquantity = requestedquantity;
+    Baseunit = baseunit;
+    Purchaserequisitionprice = purchaserequisitionprice;
+    Purreqnitemcurrency = purreqnitemcurrency;
+    Materialgroup = materialgroup;
+    Purchasinggroup = purchasinggroup;
+    Purchasingorganization = purchasingorganization;
+    OverallStatus = overall_status;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+
+  }
+}

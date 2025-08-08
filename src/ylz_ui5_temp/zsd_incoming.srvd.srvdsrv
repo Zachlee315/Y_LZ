@@ -1,0 +1,4 @@
+@EndUserText.label: '외주공정 입고'
+define service ZSD_incoming {
+  expose zif_r_incoming;
+}

@@ -1,0 +1,4 @@
+@EndUserText.label: '수신자 관리 서비스'
+define service ZLZ_MAIL_RECIP {
+  expose ZLZ_MAIL_P_RECIP;
+}

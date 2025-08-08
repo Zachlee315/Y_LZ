@@ -1,0 +1,21 @@
+managed implementation in class zbp_if_r_outsourcing unique;
+//strict ( 2 );
+
+define behavior for zif_r_outsourcing //alias <alias_name>
+persistent table ztif_outsourcing
+lock master
+with additional save
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+    field ( readonly, numbering : managed ) uuid;
+
+  // 데이터 생성되는 경우 타는 함수
+  determination create on save { create; }
+
+  mapping for ztif_outsourcing corresponding;
+}

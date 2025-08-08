@@ -1,0 +1,106 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.label: 'Material Shelf Life Management'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.typeName: 'Material Due List'
+@UI.headerInfo.typeNamePlural: 'Material Shelf Life Management'
+annotate view Z_DUE_MAT_LIST2
+    with 
+{
+  @UI.facet: [{ id: 'Material',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Material',
+                position: 10}
+                 ]
+
+  @UI:{ lineItem: [{ position: 10 }],
+        lineItem: [{label: 'Material'}],
+        identification: [{ position: 10 }],
+        selectionField: [{ position: 20 }]
+        }
+  Material;
+  @UI:{ lineItem: [{ position: 20 }],
+        lineItem: [{label: 'Material Description'} ],
+        identification: [{ position: 20 }]
+        }
+  @UI.lineItem: [{exclude: true}]
+  ProductDescription;
+  @UI:{ lineItem: [{ position: 30 }],
+        lineItem: [{label: 'Plant'}],
+        identification: [{ position: 30 }],
+        selectionField: [{ position: 10 }]
+        }
+  Plant;
+  @UI:{ lineItem: [{ position: 40 }],
+        lineItem: [{label: 'Plant Name'}],
+        identification: [{ position: 40 }]
+        }
+  @UI.lineItem: [{exclude: true}]
+  PlantName;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.lineItem: [{label: 'Storage Location'}]
+  @UI.identification: [{ position: 50 }]
+  @UI.selectionField: [{position: 50}]
+  StorageLocation;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.lineItem: [{label: 'Storage Location Name'}]
+  @UI.identification: [{ position: 60 }]
+  @UI.lineItem: [{exclude: true}]
+  StorageLocationName;
+  @UI.lineItem: [{ position: 70 }]
+  @UI.lineItem: [{label: 'Batch'}]
+  @UI.identification: [{ position: 70 }]
+  @UI.selectionField: [{position: 70}]
+  Batch;
+  @UI.lineItem: [{ position: 80 }]
+  @UI.lineItem: [{label: 'Supplier Batch'}]
+  @UI.identification: [{ position: 80 }]
+  @UI.selectionField: [{position: 80}]
+  BatchBySupplier;
+  @UI.lineItem: [{ position: 90 }]
+  @UI.lineItem: [{label: 'Supplier'}]
+  @UI.identification: [{ position: 90 }]
+  Supplier;
+  @UI.lineItem: [{ position: 100 }]
+  @UI.lineItem: [{label: 'Supplier Name'}]
+  @UI.identification: [{ position: 100 }]
+  @UI.lineItem: [{exclude: true}]
+  SupplierName;
+  @UI.lineItem: [{ position: 110 }]
+  @UI.lineItem: [{label: 'Unrestricted Inventory Qty'}]
+  @UI.identification: [{ position: 110 }]
+  MatlWrhsStkQtyInMatlBaseUnit;
+  @UI.lineItem: [{ position: 120 }]
+  @UI.lineItem: [{label: 'Unit'}]
+  @UI.identification: [{ position: 120 }]
+//  @UI.lineItem: [{exclude: true}]
+  @UI.hidden: true
+  BaseUnit;
+  @UI.lineItem: [{ position: 130 }]
+  @UI.lineItem: [{label: 'Expiration Date'}]
+  @UI.identification: [{ position: 130 }]
+  ShelfLifeExpirationDate;
+  @UI.lineItem: [{ position: 140 }]
+  @UI.lineItem: [{label: 'Manufacture Date'}]
+  @UI.identification: [{ position: 140 }]
+  @UI.lineItem: [{exclude: true}]
+  ManufactureDate;
+  @UI.lineItem: [{ position: 150 }]
+  @UI.lineItem: [{label: 'Batch Status'}]
+  @UI.identification: [{ position: 150 }]
+  @UI.lineItem: [{exclude: true}]
+  BatchStatus;
+  @UI.lineItem: [{ position: 160, importance: #HIGH }]
+  @UI.lineItem: [{label: 'Remaining Days'}]
+  @UI.identification: [{ position: 160 }]
+  remaining_days;
+  @UI.lineItem: [{ position: 170, value: 'due_range', criticality: 'Criticality' }]
+  @UI.lineItem: [{label: 'Due Date Range'}]
+  @UI.identification: [{ position: 170 }]
+  due_range;    
+  @UI.hidden: true
+  Criticality;
+    
+}

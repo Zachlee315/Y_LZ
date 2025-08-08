@@ -1,0 +1,21 @@
+managed implementation in class zbp_mes_r_0027 unique;
+//strict ( 2 );
+
+define behavior for ZMES_R_0027 //alias <alias_name>
+persistent table zmes_t_0027
+lock master
+with additional save
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+    field ( readonly, numbering : managed ) uuid;
+
+      // 데이터 생성되는 경우 타는 함수
+  determination create on save { create; }
+
+  mapping for zmes_t_0027 corresponding;
+}

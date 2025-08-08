@@ -1,0 +1,18 @@
+managed implementation in class zbp_lz_r_grtda5200 unique;
+strict ( 2 );
+
+define behavior for ZLZ_R_GRTDA5200 //alias <alias_name>
+persistent table zlz_grtda01
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+field ( readonly, numbering : managed ) uuid;
+
+
+mapping for zlz_grtda01 corresponding;
+}

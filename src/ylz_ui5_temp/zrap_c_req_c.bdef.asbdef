@@ -1,0 +1,12 @@
+projection;
+strict ( 2 );
+
+define behavior for zrap_c_req_c //alias <alias_name>
+{
+  use create;
+//  use update;
+//  use delete;
+
+//  use action create_pr;
+  use action create_pr_00;
+}

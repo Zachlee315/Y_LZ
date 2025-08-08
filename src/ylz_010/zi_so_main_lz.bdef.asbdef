@@ -1,0 +1,101 @@
+managed implementation in class zbp_i_so_main_lz unique;
+strict ( 2 );
+
+define behavior for zi_so_main_lz //alias <alias_name>
+persistent table zlz_so_main
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Detail { create; }
+  association _Detailproducts { create; }
+
+  field ( numbering : managed, readonly )
+  Orderuuid;
+
+    mapping for ZLZ_SO_MAIN
+  {
+    Orderuuid = orderuuid;
+    SalesDocument = order_number;
+    OrderStatus = order_status;
+    ChangedOn = change_at;
+    Customer = customer;
+    CustomerContact = customer_con;
+    Quantity = quantity;
+    Amount = amount;
+    UoM = unit;
+    CurrencyCode = currency;
+  }
+}
+
+define behavior for zi_so_detail_lz //alias <alias_name>
+persistent table zlz_so_detail
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Orderuuid;
+  field ( numbering : managed, readonly )
+  Detailuuid;
+  association _Header;
+
+    mapping for ZLZ_SO_DETAIL
+  {
+    Detailuuid = detailuuid;
+    Orderuuid = orderuuid;
+    SalesDocument = order_number;
+    DeliveredDate = dlv_date;
+    Model = model;
+    LeasAmount = leas_amt;
+    CurrencyCode = currency;
+    PaymentCycle = pay_cycle;
+    Contract = contract;
+    Factory = factory;
+    Color = color;
+    Axis = axis;
+    TransactionDate = tra_date;
+    Supplier = supplier;
+    SupplierNo = supplier_no;
+    Socket = socket;
+    HomePhone = con_h_phone;
+    OfficePhone = con_o_phone;
+    Edln = edln;
+    Twitter = twitter;
+    HomeAddr = haddr;
+    MailAddr = maddr;
+    Email = email;
+  }
+}
+
+define behavior for zi_so_detail_products_lz //alias <alias_name>
+persistent table zlz_so_products
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Orderuuid;
+  field ( numbering : managed, readonly ) Itemuuid;
+  association _Header;
+
+        mapping for ZLZ_SO_PRODUCTS
+  {
+    Itemuuid = itemuuid;
+    Orderuuid = orderuuid;
+    SalesDocument = order_number;
+    ItemNumber = order_item;
+    DocumentNo = doc_number;
+    Company = company;
+    Contact = contact;
+    PostingDate = post_date;
+    Amount = amount;
+    CurrencyCode = currency;
+  }
+
+}

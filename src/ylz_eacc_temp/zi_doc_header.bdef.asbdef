@@ -1,0 +1,72 @@
+managed with additional save implementation in class zbp_i_doc_header unique;
+strict ( 2 );
+
+define behavior for zi_doc_header //alias <alias_name>
+//persistent table ytdoc_header
+lock master
+authorization master ( instance )
+//with additional save
+with unmanaged save
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Item { create; }
+  association _Tax { create; }
+  association _Vendor { create; }
+  determination post on save { create; }
+
+//  static action reverse ;
+
+  mapping
+       for ytdoc_header corresponding;
+      field   ( numbering : managed , readonly ) Docuuid;
+      field   ( readonly ) Docseq;
+    }
+
+
+  define behavior for zi_doc_items //alias <alias_name>
+  persistent table ytdoc_items
+  lock dependent by _Header
+  authorization dependent by _Header
+  //etag master <field_name>
+  {
+    update;
+    delete;
+    field ( readonly ) Docuuid, Docseq;
+    field ( numbering : managed, readonly ) Itemuuid;
+    association _Header;
+    mapping
+         for ytdoc_items corresponding;
+      }
+
+    define behavior for zi_doc_tax //alias <alias_name>
+    persistent table ytdoc_tax
+    lock dependent by _Header
+    authorization dependent by _Header
+    //etag master <field_name>
+    {
+      update;
+      delete;
+      field ( readonly ) Docuuid, Docseq;
+      field ( numbering : managed, readonly ) Taxuuid;
+      association _Header;
+      mapping
+           for ytdoc_tax corresponding;
+        }
+
+      define behavior for zi_doc_vendor //alias <alias_name>
+      persistent table ytdoc_vendor
+      lock dependent by _Header
+      authorization dependent by _Header
+      //etag master <field_name>
+      {
+        update;
+        delete;
+        field ( readonly ) Docuuid, Docseq;
+        field ( numbering : managed, readonly ) Vendoruuid;
+        association _Header;
+        mapping
+             for ytdoc_vendor corresponding;
+          }

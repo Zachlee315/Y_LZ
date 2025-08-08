@@ -1,0 +1,4 @@
+@EndUserText.label: '원부자재 수입검사'
+define service ZMES_SD_0027 {
+  expose ZMES_R_0027;
+}

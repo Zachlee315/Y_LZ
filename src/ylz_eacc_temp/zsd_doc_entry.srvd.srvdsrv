@@ -1,0 +1,7 @@
+@EndUserText.label: 'Doc Entry'
+define service Zsd_doc_entry {
+  expose zi_doc_header;
+  expose zi_doc_items;
+  expose zi_doc_vendor;
+  expose zi_doc_tax;
+}

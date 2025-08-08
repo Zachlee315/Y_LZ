@@ -1,0 +1,4 @@
+@EndUserText.label: 'Currency Service'
+define service Zui_currency_lz {
+  expose ZI_CURRENCY_LZ;
+}

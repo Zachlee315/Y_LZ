@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Due of Material'
+define service Zsd_DUE_MAT_LIST {
+  expose Z_DUE_MAT_LIST2 as MatDueList;
+}

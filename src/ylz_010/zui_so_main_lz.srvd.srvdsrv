@@ -1,0 +1,6 @@
+@EndUserText.label: 'sales order CBO service'
+define service Zui_so_main_lz {
+  expose zi_so_main_lz;
+  expose zi_so_detail_lz;
+  expose zi_so_detail_products_lz;
+}

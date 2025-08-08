@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Definition for PO'
+define service YSAC_UI_PURCHASE_ORDER {
+  expose YSAC_I_PO_HEADER as PO_Header;
+  expose YSAC_I_PO_ITEM   as PO_Item;
+  expose YSAC_R_PO_QUERY  as PO_Query;
+}

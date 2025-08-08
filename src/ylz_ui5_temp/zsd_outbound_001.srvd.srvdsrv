@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Outbound'
+define service ZSD_OUTBOUND_001 {
+  expose Z_OUTBOUND_001;
+}

@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for BOM extraction'
+define service ZSD_BOM_EXTRACTION {
+  expose Z_BOM_EXTRACTION;
+}

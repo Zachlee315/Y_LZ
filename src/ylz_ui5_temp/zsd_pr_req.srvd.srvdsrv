@@ -1,0 +1,4 @@
+@EndUserText.label: 'PR req service define'
+define service ZSD_PR_REQ {
+  expose zrap_c_req_c;
+}

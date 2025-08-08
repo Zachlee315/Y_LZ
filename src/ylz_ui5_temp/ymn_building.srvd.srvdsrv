@@ -1,0 +1,4 @@
+@EndUserText.label: 'Building Service'
+define service YMN_BUILDING {
+  expose ymn_c_buildings as Buildings;
+}

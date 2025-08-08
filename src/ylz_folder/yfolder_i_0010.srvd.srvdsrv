@@ -1,0 +1,5 @@
+@EndUserText.label: 'FOLDER TEST'
+define service YFOLDER_I_0010 {
+  expose YFOLDER_C_0020 as Form;
+  expose YFOLDER_I_0010 as Menu;
+}

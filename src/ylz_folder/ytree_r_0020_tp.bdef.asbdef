@@ -1,0 +1,106 @@
+managed ;
+strict ( 2 );
+with draft;
+
+define behavior for YTREE_R_0020_TP //alias <alias_name>
+implementation in class zbp_tree_r_0020_tp unique
+persistent table yfoldert0020
+draft table yfoldert0020_d
+lock master
+total etag UpdateDate
+authorization master ( instance )
+etag master UpdateDate
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly : update ) FormId;
+  field ( mandatory : create ) cycle;
+
+  association _Menu { create; with draft; }
+
+//  action DeleteWithCheck result [0..*] $self;
+
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare
+  {
+
+  }
+
+  mapping for yfoldert0020
+    {
+      FormId     = Form_id;
+      Cycle      = cycle;
+      Createdate = cre_date;
+      CreateTime = cre_time;
+      CreateUser = cre_user;
+      Updatedate = upd_date;
+      UpdateTime = upd_time;
+      UpdateUser = upd_user;
+    }
+}
+
+
+define behavior for YTREE_R_0010_TP //alias <alias_name>
+implementation in class zbp_tree_r_0010_tp unique
+persistent table yfoldert0010
+draft table yfoldert0010_d
+lock dependent by _Form
+authorization dependent by _Form
+etag master UpdateDate
+{
+  update;
+  delete;
+
+  field ( readonly : update ) ParentMenu;
+  field ( mandatory : create, readonly : update ) FormId, MenuId, MenuSeq;
+
+  association _Form { with draft; }
+
+  association _ParentMenu
+  {
+    with draft;
+    link action linkParentMenu;
+    unlink action unlinkParentMenu;
+  }
+
+  association _Menu { with draft; }
+
+////  action ( features : instance ) DeleteMenuWithCheck result [1] $self;
+
+  instance hierarchy YTREE_I_0030
+  {
+    managed reorder action changeSeq;
+    field ( hierarchy-index ) MenuSeq;
+    ascending association _ParentMenu;
+    descending association _Menu { with cascading delete; }
+  }
+
+  ////   validation validationFormId on save { create; field FormId; }
+//  validation validateCheckDelete on save { delete; }
+
+  ////  determine action validateCheckDeleteParent { validation validateCheckDelete; }
+  ////
+  ////  side effects
+  ////  { determine action validateCheckDeleteParent executed on field MenuId affects messages; }
+
+
+  mapping for yfoldert0010
+    {
+      FormId     = Form_id;
+      MenuId     = menu_id;
+      ParentMenu = parent_menu;
+      MenuName   = menu_name;
+      MenuSeq    = menu_seq;
+      Createdate = cre_date;
+      CreateTime = cre_time;
+      CreateUser = cre_user;
+      Updatedate = upd_date;
+      UpdateTime = upd_time;
+      UpdateUser = upd_user;
+    }
+}

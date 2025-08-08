@@ -1,0 +1,5 @@
+@EndUserText.label: 'Master Data Get'
+define service Z_SD_MD_LZ {
+  expose zi_costcenter_tmp as ZI_COSTCENTER_TMP;
+  expose ZI_GLACC_TMP;
+}

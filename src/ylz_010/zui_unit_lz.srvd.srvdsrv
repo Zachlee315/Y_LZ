@@ -1,0 +1,4 @@
+@EndUserText.label: 'uni'
+define service Zui_unit_lz {
+  expose zi_unit_lz;
+}

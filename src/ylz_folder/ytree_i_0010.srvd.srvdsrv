@@ -1,0 +1,5 @@
+@EndUserText.label: 'YTREE_I_0010'
+define service YTREE_I_0010 {
+  expose YTREE_C_0020_TP as Form;
+  expose YTREE_C_0010_TP as MenuTree;
+}
